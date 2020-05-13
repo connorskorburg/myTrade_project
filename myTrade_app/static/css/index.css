@@ -1,0 +1,41 @@
+/* overlay classes */
+#stock_overlay{
+    height: 100vh;
+    background-image: url("../img/overlay2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    background-position: right center;
+}
+#welcome_overlay{
+    margin-top: 4rem;
+    color: #fff;
+}
+
+/* navbar classes */ 
+.nav-item:hover{
+    text-decoration: none;
+    color: #185845;
+}
+
+/* utility classes */
+.my-none{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* card styling */
+.card{
+    height: 12rem;
+}
+
+/* back to top styling */
+#bottom{
+    margin-left: 20rem;
+}
+
+/* analytics img styling */
+#analytics{
+    width: 100%;
+    height: 17.75rem;
+}

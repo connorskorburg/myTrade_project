@@ -1,0 +1,34 @@
+.wrapper-left{
+    width: 25%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    min-height: 50vh;
+    background-color: #999;
+    display: inline-block;
+}
+.wrapper-right{
+    width: 67.5%;
+    margin-right: 2.5%;
+    min-height: 100vh;
+    vertical-align: top;
+    background-color: #999;
+    display: inline-block;
+}
+.avatar{
+    display: inline-block;
+    border-radius: 50%;
+}
+.inner-profile a, .post a{
+    text-decoration: none;
+}
+.comment, .new-comment{
+    width: 95%;
+    margin-left: 5%;
+}
+.like:hover{
+   color: #405663;
+}
+textarea{
+    resize: none;
+    min-height: 15vh;
+}

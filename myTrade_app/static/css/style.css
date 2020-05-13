@@ -1,0 +1,127 @@
+/* overall styling */
+*{
+    /* outline: 1px solid red; */
+}
+body{
+    height: 100%;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* brand styling */
+.brand-border{
+    border: 1px solid;
+    border-radius: .25rem;
+}
+.brand{
+    color: #6789A0;
+}
+.bg-brand{
+    background-color: #6789A0;
+} 
+.btn-brand{
+    background-color: #6789A0;
+}
+
+/* brand2 */
+.bg-brand-2{
+    background-color:#AD6354;
+}
+.brand-2{
+    color: #AD6354;
+}
+
+/* button hover */
+.btn-brand:hover{
+    /* background-color: #405663; */
+}
+.btn-brand-2:hover{
+    /* background-color: rgb(130, 77, 66); */
+}
+.brand-2-link{
+    text-decoration: none !important;
+    color: #AD6354;
+    font-weight: bold !important;
+}
+.brand-2-link:hover{
+    color: rgb(130, 77, 66);
+}
+
+/* pinstripes */
+.pinstripe {
+    background: repeating-linear-gradient(45deg, #999, #999 1rem, #777 1rem, #777 1.75rem);
+}
+.pinstripe-dark{
+    background: repeating-linear-gradient(45deg, #222, #222 1rem, #333 1rem, #333 1.75rem);
+}
+.pinstripe-brand{
+    background: repeating-linear-gradient(45deg, #6789A0, #6789A0 1rem, #405663 1rem, #405663 1.75rem);
+}
+
+/* utility */
+.bg-dark-blue{
+    background-color: #405663;
+}
+.bg-light-gray{
+    background-color: rgb(241, 241, 241);
+}
+.bg-lighter-gray{
+    background-color: rgb(238, 238, 238);
+}
+.faded-bg{
+    background: linear-gradient(to right, rgba(173, 99, 84, 0.5), rgba(173, 99, 84, 1.0));
+}
+
+/* all content */
+#all-content{
+    width: 100%;
+    transition: width 0.1s, margin-left 0.1s;
+}
+
+/* side nav */
+.side-nav{
+    overflow-x: hidden;
+    padding-top: 1rem;
+    min-height: 100vh;
+    width: 0;
+    z-index: 1; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* transition: 0.3s; */
+}
+/* side nav inner */
+.side-nav-inner a{
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    padding: 2rem;
+    margin: 0;
+    /* transition: 0.3s; */
+}
+.side-nav-inner a:hover{
+    /* background-color: rgb(130, 77, 66); */
+    background-color: rgb(216, 212, 212);
+    
+}
+.active{
+    /* background-color: rgb(130, 77, 66); */
+    background-color: rgb(216, 212, 212);
+}
+
+/* hamburger */
+.hamburger{
+    padding-top: 1rem;
+    margin-left: 1rem;
+    /* color: #fff; */
+    color: rgb(216, 212, 212);
+}
+.text-hamburger{
+    color: rgb(216, 212, 212) !important;
+}
+.hamburger:hover{
+    color: rgb(212, 211, 211);
+    font-size: 1.02rem;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>My Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/feed.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+</head>
+<body class="">
+    <!-- side navbar -->
+    <div class="side-nav border rounded" id="nav-toggle">
+        <a href="" class="hamburger" onclick="closeNav()"><i class="fas fa-times fa-2x mb-3"></i></a>
+        <div class="side-nav-inner">
+            <a href="/user_dash" class="text-dark"><i class="text-dark fas fa-home"></i> My Dashboard</a>
+            <a href="/user_profile" class="text-dark active"><i class="text-dark fas fa-user-circle"></i> My Profile</a>
+            <a href="/feed" class="text-dark"><i class="text-dark fas fa-user-friends"></i> My Feed</a>
+            <a href="/user_account" class="text-dark"><i class="text-dark fas fa-address-card"></i> My Account</a>
+            <a href="/user_analytics" class="text-dark"><i class="text-dark fas fa-chart-bar"></i> My Analytics</a>
+        </div>
+    </div>
+            <!-- navbar with pinstripe background -->
+    <div id="all-content">
+        <nav class="navbar navbar-expand ">
+            <a role="button" class=" mr-3 btn" onclick="openNav()"><i class="text-hamburger fas fa-bars fa-2x"></i></a>
+            <div class="container">
+                <a href="/" class="navbar-brand text-dark px-3 py-2 font-weight-bold ">MyTrade <i class="fas fa-piggy-bank"></i></a>
+                <ul class="navbar-nav">
+                    <li><a href="logout" role="button" class="btn btn-dark nav-item mr-1 font-weight-bold">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="feed">
+            <div class="wrapper-left profile rounded bg-white font-weight-bold">
+                <div class="inner-profile text-center pt-2 border rounded p-3 my-3 bg-light">
+                    <div class="avatar p-3 mb-1">
+                        <i class=" fas fa-dragon fa-3x"></i>
+                    </div>
+                    <h3 class="font-weight-bold">@{{ profile.username}}</h3>
+                    <a href="" class="text-info">35</a> <span class="brand">Followers</span>
+                    <a href="" class="text-info">15</a> <span class="brand">Posts</span>
+                    <p class="mt-2">Joined {{ profile.created_at }}</p>
+                    <a href="/profile_settings" role="button" class="btn btn-dark font-weight-bold">Profile Settings</a>
+                </div>
+                <div class="followers p-3 border rounded bg-light">
+                    <h4 class="font-weight-bold">Followers</h4>
+                    <a href="" class="text-dark d-block"><i class="fas fa-atom"></i> bobjohnson</a>
+                    <a href="" class="text-dark d-block"><i class="fas fa-anchor"></i> sarahjacobs</a>
+                    <a href="" class="text-dark d-block"><i class="fas fa-bomb"></i> ryansmith</a>
+                    <a href="" class="text-dark d-block"><i class="fas fa-crown"></i> jordanmichaels</a>
+                    <a href="" class="text-dark d-block"><i class="fas fa-dragon "></i> susanhenderson</a>
+                </div>
+            </div><div class="wrapper-right p-4 bg-light rounded border font-weight-bold mt-3">
+                <div class="new-post border rounded p-2 mb-3 bg-light-gray">
+                    <form action="/create_post" class="p-2" method="post">
+                        {% csrf_token %}
+                        <h3 class="ml-2 font-weight-bold">Add Post</h3>
+                        <textarea type="text" name="content" class="form-control" placeholder="255 Characters max"></textarea>
+                        <button class="btn btn-dark mt-2">Post</button>
+                    </form>
+                </div>
+                <h3 class="mb-3 font-weight-bold">My Posts</h3>
+                <div class="post border rounded p-2 mb-2 bg-light-gray">
+                    <a href="" class="h5 text-dark">@johnsmith</a>
+                    <a href="" class="text-dark like"> 5 <i class="fas fa-heart"></i></a>
+                    <p class="text-dark px-2 mt-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos obcaecati mollitia molestias quo dolorem quidem voluptate temporibus non vitae aliquam, hic nihil cupiditate, asperiores possimus adipisci ratione magni illum enim omnis nobis quos ipsam exercitationem. Illo, molestias. Ullam aperiam, sit error quas beatae corrupti officia quo temporibus, reprehenderit explicabo tempore.</p>    
+                </div>
+                <div class="comment border rounded p-2 mb-2 bg-lighter-gray">
+                    <a href="" class="h6 text-dark">@fakeuser</a>
+                    <p class="text-dark px-2 mt-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga tenetur quo, delectus odit ea quam ipsa ratione culpa exercitationem nam?</p>
+                </div>
+                <div class="post border rounded p-2 mb-2 bg-light-gray">
+                    <a href="" class="h5 text-dark">@johnsmith</a>
+                    <a href="" class="text-dark like"> 2 <i class="fas fa-heart"></i></a>
+                    <p class="text-dark px-2 mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. A similique impedit alias reprehenderit dolorum vitae. Deserunt aliquid facere totam explicabo porro distinctio velit, voluptatem odio cum minima nam corporis eveniet quidem eos itaque optio aperiam? Veritatis blanditiis, corrupti assumenda, dolore doloremque pariatur temporibus neque perspiciatis vero nostrum repudiandae sed dignissimos.</p>
+                </div>
+                <div class="comment border rounded p-2 mb-2 bg-lighter-gray">
+                    <a href="" class="h6 text-dark">@fakeuser</a>
+                    <p class="text-dark px-2 mt-1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi itaque id, ipsum porro cumque voluptatem iusto, dolor iste cum doloremque odio animi cupiditate temporibus a, est tenetur quisquam eum similique.</p>
+                </div>
+                <div class="comment border rounded p-2 mb-2 bg-lighter-gray">
+                    <a href="" class="h6 text-dark">@fakeuser234</a>
+                    <p class="text-dark px-2 mt-1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi itaque id, ipsum porro cumque voluptatem iusto, dolor iste cum doloremque odio animi cupiditate temporibus a, est tenetur quisquam eum similique. voluptatem iusto, dolor iste cum doloremque odio animi cupiditate temporibus a, est tenetur quisquam eum similique.</p>
+                </div>
+            </div>
+        </div>

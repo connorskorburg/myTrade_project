@@ -1,0 +1,22 @@
+.wrapper-left{
+    width: 25%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    min-height: 50vh;
+    background-color: #999;
+    display: inline-block;
+}
+.wrapper-right{
+    width: 67.5%;
+    margin-right: 2.5%;
+    vertical-align: top;
+    display: inline-block;
+    /* min-height: 100vh; */
+}
+.balance{
+    text-align: center;
+}
+.avatar{
+    display: inline-block;
+    border-radius: 50%;
+}

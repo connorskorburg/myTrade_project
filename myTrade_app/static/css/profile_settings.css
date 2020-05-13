@@ -1,0 +1,27 @@
+.pass-update{
+    width: 37.5%;
+    display: inline-block;
+    min-height: 50vh;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+.avatar-update{
+    width: 55%;
+    margin-right: 2.5%;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 50vh;
+}
+.avatar-div{
+    display: inline-block;
+    width: 24%;
+    margin-bottom: 5%;
+}
+.radio{
+    display: inline-block;
+    margin-left: 45%;
+    margin-top: 5%;
+}
+.avatar-btn{
+    margin-left: 80%;
+}

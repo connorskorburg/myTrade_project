@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>My Feed</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/feed.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+</head>
+<body class="">
+    <!-- side navbar -->
+    <div class="side-nav border rounded" id="nav-toggle">
+        <a href="" class="hamburger" onclick="closeNav()"><i class="fas fa-times fa-2x mb-3"></i></a>
+        <div class="side-nav-inner">
+            <a href="/user_dash" class="text-dark"><i class="text-dark fas fa-home"></i> My Dashboard</a>
+            <a href="/user_profile" class="text-dark"><i class="text-dark fas fa-user-circle"></i> My Profile</a>
+            <a href="/feed" class="text-dark active"><i class="text-dark fas fa-user-friends"></i> My Feed</a>
+            <a href="/user_account" class="text-dark"><i class="text-dark fas fa-address-card"></i> My Account</a>
+            <a href="/user_analytics" class="text-dark"><i class="text-dark fas fa-chart-bar"></i> My Analytics</a>
+        </div>
+    </div>
+            <!-- navbar with pinstripe background -->
+    <div id="all-content">
+        <nav class="navbar navbar-expand ">
+            <a role="button" class=" mr-3 btn" onclick="openNav()"><i class="text-hamburger fas fa-bars fa-2x"></i></a>
+            <div class="container">
+                <a href="/" class="navbar-brand text-dark px-3 py-2 font-weight-bold ">MyTrade <i class="fas fa-piggy-bank"></i></a>
+                <ul class="navbar-nav">
+                    <li><a href="logout" role="button" class="btn btn-dark nav-item mr-1 font-weight-bold">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="feed">
+            <div class="wrapper-left profile bg-light p-3 mt-3 border rounded font-weight-bold">
+                <div class="inner-profile text-center pt-2">
+                    <div class="avatar p-3 mb-1">
+                        <i class=" fas fa-dragon fa-3x"></i>
+                    </div>
+                        <h2 class="font-weight-bold">@johnsmith</h2>
+                        <a href="" class="text-info">{{ user_profile.followers.count }}</a> <span class="brand">Followers</span>
+                        <a href="" class="text-info">{{ user.posts.count }}</a> <span class="brand">Posts</span>
+                        <p class="brand mt-2">Joined May 4, 2020</p>
+                        <a href="/profile_settings" role="button" class="btn btn-dark font-weight-bold">Profile Settings</a>
+                </div>
+            </div><div class="wrapper-right p-4 bg-light border rounded font-weight-bold mt-3">
+                <h1 class="mb-3 font-weight-bold">My Feed</h1>
+                {% for post in posts %}
+                <div class="post border rounded p-2 mb-2 bg-light-gray">
+                    {% for profile in profiles %}
+                    {% if post.poster.id == profile.user.id %}
+                    <a href="/user_profile" class="h5 text-dark font-weight-bold">@{{ profile.username }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    {% if post.poster.id == request.session.id %}
+                    <span class="text-dark">{{ post.user_who_liked.count }} <i class="fas fa-heart"></i></span>
+                    {% elif post.poster.id != request.session.id %}
+                    <a href="" class="text-dark like">{{ post.user_who_liked.count }} <i class="fas fa-heart"></i></a>
+                    {% endif %}
+                    <p class="text-dark px-2 mt-1">{{ post.content }}</p>    
+                </div>
+                {% for comments in post.comments.all %}
+                <div class="comment border rounded p-2 mb-2 bg-lighter-gray">
+                    <a href="/user_profile" class="h6 text-dark ">@user</a>
+                    <p class="text-dark px-2 mt-1">{{ comment.content }}</p>
+                </div>
+                {% endfor %}
+                {% if post.poster.id != request.session.id %}
+                <div class="new-comment border rounded p-2 mb-2 bg-lighter-gray">
+                    <form action="/add_comment" method="post">
+                        <textarea type="text" class="form-control" placeholder="255 Characters max"></textarea>
+                        <button class="btn btn-sm btn-dark mt-2">Comment</button>
+                    </form>
+                </div>
+                {% endif %}
+                {% endfor %}
+                
+            </div>
+        </div>
+
+
