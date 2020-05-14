@@ -10,7 +10,7 @@ class User(models.Model):
     bio = models.CharField(max_length=255)
     avatar = models.CharField(max_length=25)
     password = models.CharField(max_length=255)
-    followers = models.ForeignKey('self', on_delete=models.CASCADE)
+    followers = models.ManyToManyField('self', symmetrical=False)
     account_balance = models.FloatField(default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
